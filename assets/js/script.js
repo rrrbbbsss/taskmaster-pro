@@ -5,8 +5,6 @@ var tasks = {};
 var auditTask = function(taskEl) {
   // get datef romt ask element
   var date = $(taskEl).find("span").text().trim();
-  // ensure it worked
-  console.log(date);
 
   // convert to moment object at 5:00pm
   var time = moment(date, "L").set("hour", 17);
@@ -285,3 +283,8 @@ $("#remove-tasks").on("click", function () {
 loadTasks();
 
 
+setInterval(function(){
+  $(".card .list-group-item").each(function(index, el) {
+    auditTask(el);
+  });
+}, ((1000 * 60) * 30));
